@@ -1,3 +1,8 @@
+import CitasVet from "./components/CitasVet"
+import Formulario from "./components/Formulario"
+import Header from "./components/Header"
+
+
 
 function App() {
 
@@ -5,8 +10,13 @@ function App() {
 
   return (
     <div >
+      
+     <Header/>
+
+     <Formulario/>
+     <CitasVet/>
      
-      <h1>H</h1>
+     
     </div>
   )
 }
