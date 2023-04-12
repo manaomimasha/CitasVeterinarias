@@ -3,37 +3,34 @@ import { useState, useEffect } from "react"
 const Formulario = () => {
 
    const [nombre, setNombre] = useState("");
-
    const [propietario, setPropietario] = useState("");
-
    const [email, setEmail] = useState("");
-
    const [fecha, setFecha] = useState("");
-
    const [sintomas, setSintomas] = useState("");
-
    const [error, setError] = useState(false);
 
    const handleSubmit = (e) => {
-      e.preventDefault()
-      if ([nombre, propietario, email, fecha, sintomas].includes(" ")) {
+      e.preventDefault();
+      if ([nombre, propietario, email, fecha, sintomas].includes(''))
+       {
+         console.log("Error")
          setError(true)
+       
       }
-      console.log("Hay al menos un campo VACIO")
-      return
+      else { setError(false) }
    }
-   setError(false)
 
    return (
       <div className='md:w-1/2 lg:w-2/5 mx-5 my-1'>
 
          <h1 className='text-black font-bold text-3xl  text-center '>Seguimiento de Pacientes</h1> {""}
-         <p className='text-lg mt-5 text-center'>Añade pacientes y <span className='text-indigo-600 font-bold'> Administrelos</span></p>
+         <p className='text-xl mt-5 text-center'>Añade pacientes y <span className='text-indigo-600 font-bold'> Administrelos</span></p>
 
-         {error && "error" }
          <form
             onSubmit={handleSubmit}
-            className='shadow-md bg-white py-10 px-5 rounded-lg mt-10 mb-10'>
+            className='shadow-md bg-white py-10 px-5 rounded-lg mt-10 mb-10'
+         >
+            { error &&  <div className=" text-center uppercase text-white bg-red-800 p-3 font-bold mb-3"> TODOS LOS CAMPOS SON OBLIGATORIOS</div> }
 
             <label htmlFor="mascota" className='uppercase font-bold text-grey-300 '>
                Nombre Mascota</label>
@@ -42,7 +39,6 @@ const Formulario = () => {
                value={nombre}
                onChange={(e) => {
                   setNombre(e.target.value)
-
                }}
             />
 
@@ -117,6 +113,7 @@ const Formulario = () => {
             <input type="submit"
                className='p-3 w-full bg-indigo-600  hover:bg-indigo-700 transition-colors text-white uppercase font-bold cursor-pointer  mb-2 mt-5 '
                value={"Agregar Paciente"} />
+
          </form>
       </div>
    )
