@@ -1,23 +1,42 @@
 import { useState, useEffect } from "react"
 
-const Formulario = () => {
-
-   const [nombre, setNombre] = useState("");
+const Formulario = ({ pacientes, setPacientes }) => {
+     
+   const [nombre, setNombre] = useState(pacientes.nombre);
    const [propietario, setPropietario] = useState("");
-   const [email, setEmail] = useState("");
+   const [email, setEmail] = useState(pacientes.email);
    const [fecha, setFecha] = useState("");
    const [sintomas, setSintomas] = useState("");
    const [error, setError] = useState(false);
 
    const handleSubmit = (e) => {
       e.preventDefault();
-      if ([nombre, propietario, email, fecha, sintomas].includes(''))
-       {
+      if ([nombre, propietario, email, fecha, sintomas].includes('')) {
          console.log("Error")
          setError(true)
-       
+
       }
       else { setError(false) }
+
+      const objetoPaceiente = {
+         nombre,
+         propietario,
+         email,
+         fecha,
+         sintomas
+      }
+
+       setPacientes([...pacientes, objetoPaceiente])
+
+      // //cambiar mail YNOMBR :
+      // setPacientes({nombre, email})
+
+      setNombre("")
+      setPropietario("")
+      setEmail("")
+      setFecha("")
+      setSintomas("")
+
    }
 
    return (
@@ -30,9 +49,10 @@ const Formulario = () => {
             onSubmit={handleSubmit}
             className='shadow-md bg-white py-10 px-5 rounded-lg mt-10 mb-10'
          >
-            { error &&  <div className=" text-center uppercase text-white bg-red-800 p-3 font-bold mb-3"> TODOS LOS CAMPOS SON OBLIGATORIOS</div> }
+            {error && <div className=" text-center uppercase text-white bg-red-800 p-3 font-bold mb-3"> TODOS LOS CAMPOS SON OBLIGATORIOS</div>}
 
-            <label htmlFor="mascota" className='uppercase font-bold text-grey-300 '>
+            <label htmlFor="mascota"
+               className='uppercase font-bold text-grey-300 '>
                Nombre Mascota</label>
             <input
                type="text" id='mascota' className='w-full border-2 p-2 placeholder-gray-400 rounded-md mt-2 mb-5' placeholder=' Nombre de la Mascota'
