@@ -1,8 +1,6 @@
 
  const Paciente =  ({pacientE}) => {
 
-   const {nombre, propietario, email, alta, sintomas} = pacientE
-
  return (
 
   <div className=" bg-white shadow-md rounded-xl m-3 px-5 py-10 ">
