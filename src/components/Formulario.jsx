@@ -61,9 +61,7 @@ const Formulario = ({ pacientes, setPacientes }) => {
                type="text" id='mascota' className='w-full border-2 p-2 placeholder-gray-400 rounded-md mt-2 mb-5' placeholder=' Nombre de la Mascota'
                value={nombre}
                onChange={(e) =>
-                   {
-                     // console.log("escribiendo")
-                  setNombre(e.target.value)
+                   {        setNombre(e.target.value)
                }}
             />
 
@@ -118,13 +116,13 @@ const Formulario = ({ pacientes, setPacientes }) => {
 
             />
 
-            <label htmlFor="email"
+            <label htmlFor="sintomas"
                className='uppercase font-bold  text-grey-700 '>
                Describe los Sintomas
             </label>
             <input
                type="textarea"
-               id='email'
+               id='sintomas'
                className='w-full border-2 p-2 placeholder-gray-400 rounded-md mt-2 '
                placeholder='Describe los Sintomas'
                value={sintomas}
