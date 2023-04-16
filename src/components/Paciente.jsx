@@ -1,5 +1,7 @@
  const Paciente =  ({pac}) => {
-   const {nombre, propietario, email, fecha, sintomas} = pac 
+
+   const {nombre, propietario, email, fecha, sintomas} = pac
+
  return (
   <div className=" bg-white shadow-md rounded-xl m-3 px-5 py-10 ">
 
