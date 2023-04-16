@@ -9,11 +9,9 @@ const ListadoPacientes = ( {pacientes}) => {
         Administra tus  <span className='font-bold text-indigo-600 mb-5'> Pacientes y Citas</span></p>
 
       { pacientes.map ( (pac) => {
-
         <Paciente 
         pac= {pac}
         />
-
       })}
       
 
