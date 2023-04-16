@@ -9,10 +9,17 @@ const Formulario = ({ pacientes, setPacientes }) => {
    const [fecha, setFecha] = useState('');
    const [sintomas, setSintomas] = useState('');
    const [error, setError] = useState(false);
+   const generarId = () => {
 
+      const random = Math.random().toString(36).substr(2);
+      const fecha = Date.now().toString(36);
+
+      return random + fecha
+   }
    const handleSubmit = (e) => {
       e.preventDefault();
-      if ([nombre, propietario, email, fecha, sintomas].includes('')) {
+      if ([nombre, propietario, email, fecha, sintomas].includes(''))
+       {
          console.log("Error")
          setError(true)
       }
@@ -23,7 +30,8 @@ const Formulario = ({ pacientes, setPacientes }) => {
          propietario,
          email,
          fecha,
-         sintomas
+         sintomas, 
+         id: generarId()
       }
 
        setPacientes([...pacientes, objetoPaceiente])
@@ -50,7 +58,7 @@ const Formulario = ({ pacientes, setPacientes }) => {
             className='shadow-md bg-white py-10 px-5 rounded-lg mt-10 mb-10'
          >
 
-            {error && 
+            { error && 
             < Mensaje mensaje= " TODOS LOS CAMPOS SON OBLIGATORIOS" />
             }
 
