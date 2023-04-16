@@ -1,12 +1,13 @@
 
  const Paciente =  ({pacientE}) => {
 
+   const {nombre} = pacientE
  return (
 
   <div className=" bg-white shadow-md rounded-xl m-3 px-5 py-10 ">
 
        <p className="uppercase text-grey-700 mb-3 font-bold "> Nombre mascota:  {""}
-         <span className="font-normal normal-case"> {pacientE.nombre}</span>
+         <span className="font-normal normal-case"> {nombre}</span>
       </p>
       
       <p className="uppercase text-grey-700 mb-3 font-bold "> Propietario:  {""}
