@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react"
+import Mensaje from "./Mensaje"
 
 const Formulario = ({ pacientes, setPacientes }) => {
      
-   const [nombre, setNombre] = useState(pacientes.nombre);
-   const [propietario, setPropietario] = useState("");
-   const [email, setEmail] = useState(pacientes.email);
-   const [fecha, setFecha] = useState("");
-   const [sintomas, setSintomas] = useState("");
+   const [nombre, setNombre] = useState('');
+   const [propietario, setPropietario] = useState('');
+   const [email, setEmail] = useState('');
+   const [fecha, setFecha] = useState('');
+   const [sintomas, setSintomas] = useState('');
    const [error, setError] = useState(false);
 
    const handleSubmit = (e) => {
@@ -14,7 +15,6 @@ const Formulario = ({ pacientes, setPacientes }) => {
       if ([nombre, propietario, email, fecha, sintomas].includes('')) {
          console.log("Error")
          setError(true)
-
       }
       else { setError(false) }
 
@@ -28,7 +28,7 @@ const Formulario = ({ pacientes, setPacientes }) => {
 
        setPacientes([...pacientes, objetoPaceiente])
 
-      // //cambiar mail YNOMBR :
+      // //cambiar mail YNOMBRe  :
       // setPacientes({nombre, email})
 
       setNombre("")
@@ -45,11 +45,14 @@ const Formulario = ({ pacientes, setPacientes }) => {
          <h1 className='text-black font-bold text-3xl  text-center '>Seguimiento de Pacientes</h1> {""}
          <p className='text-xl mt-5 text-center'>Añade pacientes y <span className='text-indigo-600 font-bold'> Administrelos</span></p>
 
-         <form
+         <form 
             onSubmit={handleSubmit}
             className='shadow-md bg-white py-10 px-5 rounded-lg mt-10 mb-10'
          >
-            {error && <div className=" text-center uppercase text-white bg-red-800 p-3 font-bold mb-3"> TODOS LOS CAMPOS SON OBLIGATORIOS</div>}
+
+            {error && 
+            < Mensaje mensaje= " TODOS LOS CAMPOS SON OBLIGATORIOS" />
+            }
 
             <label htmlFor="mascota"
                className='uppercase font-bold text-grey-300 '>
@@ -57,7 +60,9 @@ const Formulario = ({ pacientes, setPacientes }) => {
             <input
                type="text" id='mascota' className='w-full border-2 p-2 placeholder-gray-400 rounded-md mt-2 mb-5' placeholder=' Nombre de la Mascota'
                value={nombre}
-               onChange={(e) => {
+               onChange={(e) =>
+                   {
+                     // console.log("escribiendo")
                   setNombre(e.target.value)
                }}
             />
@@ -72,7 +77,7 @@ const Formulario = ({ pacientes, setPacientes }) => {
                className='w-full border-2 p-2 placeholder-gray-400 rounded-md mt-2 mb-2'
                placeholder=' Su Nombre'
                value={propietario}
-               onChange={(e) => {
+               onChange={e => {
                   setPropietario(e.target.value)
 
                }}
@@ -123,10 +128,7 @@ const Formulario = ({ pacientes, setPacientes }) => {
                className='w-full border-2 p-2 placeholder-gray-400 rounded-md mt-2 '
                placeholder='Describe los Sintomas'
                value={sintomas}
-               onChange={(e) => {
-                  setSintomas(e.target.value)
-
-               }}
+               onChange={ e => setSintomas(e.target.value)}
 
             />
 
