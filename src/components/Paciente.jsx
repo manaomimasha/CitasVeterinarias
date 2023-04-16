@@ -1,4 +1,4 @@
- const Paciente =  ({pac}) => {
+ const Paciente =  () => {
 
    const {nombre, propietario, email, fecha, sintomas} = pac
 
