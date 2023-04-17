@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 import Mensaje from "./Mensaje"
 
 const Formulario = ({ pacientes, setPacientes, paciente }) => {
-     
+
    const [nombre, setNombre] = useState('');
    const [propietario, setPropietario] = useState('');
    const [email, setEmail] = useState('');
@@ -17,18 +17,18 @@ const Formulario = ({ pacientes, setPacientes, paciente }) => {
       return random + fecha
    }
 
-   useEffect(
-      ()=> {
-         if( Object.keys(paciente)>0){
-            setNombre(paciente.nombre)
-            setEmail(paciente.email)
-         }
-      }, [paciente]
+   useEffect(() => {
+      if (Object.keys(paciente) > 0) {
+         setNombre(paciente.nombre)
+         setEmail(paciente.email)
+      }
+   }, [paciente]
    )
+
+
    const handleSubmit = (e) => {
       e.preventDefault();
-      if ([nombre, propietario, email, fecha, sintomas].includes(''))
-       {
+      if ([nombre, propietario, email, fecha, sintomas].includes('')) {
          console.log("Error")
          setError(true)
       }
@@ -39,12 +39,11 @@ const Formulario = ({ pacientes, setPacientes, paciente }) => {
          propietario,
          email,
          fecha,
-         sintomas, 
+         sintomas,
          id: generarId()
       }
 
-       setPacientes([...pacientes, objetoPaceiente])
-
+      setPacientes([...pacientes, objetoPaceiente])
       // //cambiar mail YNOMBRe  :
       // setPacientes({nombre, email})
 
@@ -62,13 +61,13 @@ const Formulario = ({ pacientes, setPacientes, paciente }) => {
          <h1 className='text-black font-bold text-3xl  text-center '>Seguimiento de Pacientes</h1> {""}
          <p className='text-xl mt-5 text-center'>Añade pacientes y <span className='text-indigo-600 font-bold'> Administrelos</span></p>
 
-         <form 
+         <form
             onSubmit={handleSubmit}
             className='shadow-md bg-white py-10 px-5 rounded-lg mt-10 mb-10'
          >
 
-            { error && 
-            < Mensaje mensaje= " TODOS LOS CAMPOS SON OBLIGATORIOS" />
+            {error &&
+               < Mensaje mensaje=" TODOS LOS CAMPOS SON OBLIGATORIOS" />
             }
 
             <label htmlFor="mascota"
@@ -77,8 +76,8 @@ const Formulario = ({ pacientes, setPacientes, paciente }) => {
             <input
                type="text" id='mascota' className='w-full border-2 p-2 placeholder-gray-400 rounded-md mt-2 mb-5' placeholder=' Nombre de la Mascota'
                value={nombre}
-               onChange={(e) =>
-                   {        setNombre(e.target.value)
+               onChange={(e) => {
+                  setNombre(e.target.value)
                }}
             />
 
@@ -143,7 +142,7 @@ const Formulario = ({ pacientes, setPacientes, paciente }) => {
                className='w-full border-2 p-2 placeholder-gray-400 rounded-md mt-2 '
                placeholder='Describe los Sintomas'
                value={sintomas}
-               onChange={ e => setSintomas(e.target.value)}
+               onChange={e => setSintomas(e.target.value)}
 
             />
 
