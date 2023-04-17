@@ -34,9 +34,7 @@ const Paciente = ({ pacientE, setPaciente }) => {
             <button
                type="button"
                className="py-2 px-10 bg-indigo-800 hover:bg-indigo-600 uppercase font-bold text-white  rounded-lg "
-               onClick={() => (
-                  setPaciente(paciente)
-               )}>
+               onClick={() => ( setPaciente(paciente)  )}>
                Editar
             </button>
 

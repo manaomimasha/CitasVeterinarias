@@ -9,15 +9,8 @@ const Formulario = ({ pacientes, setPacientes, paciente }) => {
    const [fecha, setFecha] = useState('');
    const [sintomas, setSintomas] = useState('');
    const [error, setError] = useState(false);
-   const generarId = () => {
 
-      const random = Math.random().toString(36).substr(2);
-      const fecha = Date.now().toString(36);
-
-      return random + fecha
-   }
-
-   useEffect(() => {
+   useEffect( () => {
       if (Object.keys(paciente).length > 0) {
          setNombre(paciente.nombre)
          setEmail(paciente.email)
@@ -25,6 +18,13 @@ const Formulario = ({ pacientes, setPacientes, paciente }) => {
    }, [paciente]
    )
 
+   const generarId = () => {
+
+      const random = Math.random().toString(36).substr(2);
+      const fecha = Date.now().toString(36);
+
+      return random + fecha
+   }
 
    const handleSubmit = (e) => {
       e.preventDefault();
