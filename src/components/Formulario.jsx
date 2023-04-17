@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import Mensaje from "./Mensaje"
 
-const Formulario = ({ pacientes, setPacientes }) => {
+const Formulario = ({ pacientes, setPacientes, paciente }) => {
      
    const [nombre, setNombre] = useState('');
    const [propietario, setPropietario] = useState('');
@@ -16,6 +16,15 @@ const Formulario = ({ pacientes, setPacientes }) => {
 
       return random + fecha
    }
+
+   useEffect(
+      ()=> {
+         if( Object.keys(paciente)>0){
+            setNombre(paciente.nombre)
+            setEmail(paciente.email)
+         }
+      }, [paciente]
+   )
    const handleSubmit = (e) => {
       e.preventDefault();
       if ([nombre, propietario, email, fecha, sintomas].includes(''))
