@@ -29,7 +29,21 @@ console.log(pacientE)
         {sintomas} 
          </span>
        </p>
+ <div className=" flex justify-between mt-7 ">
+   <button
+   type="button"
+   className="py-2 px-10 bg-indigo-800 hover:bg-indigo-600 uppercase font-bold text-white  rounded-lg ">
+Editar
+   </button>
 
+   
+   <button
+   type="button"
+   className="py-2 px-10 bg-red-800 hover:bg-red-600 uppercase font-bold text-white  rounded-lg ">
+Eliminar
+   </button>
+
+ </div>
     </div>
   )
 }
