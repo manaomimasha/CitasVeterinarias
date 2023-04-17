@@ -1,4 +1,4 @@
-const Paciente = ({ pacientE, setPaciente, paciente }) => {
+const Paciente = ({ pacientE, setPaciente }) => {
 
    const { nombre, propietario, email, fecha, sintomas } = pacientE
    console.log(pacientE)
