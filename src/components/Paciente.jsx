@@ -1,7 +1,7 @@
 const Paciente = ({ paciente, setPaciente }) => {
 
    const { nombre, propietario, email, fecha, sintomas } = paciente
-   console.log(paciente)
+   
    return (
       <div className=" bg-white shadow-md rounded-xl m-3 px-5 py-10 ">
 
