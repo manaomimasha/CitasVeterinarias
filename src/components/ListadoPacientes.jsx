@@ -20,11 +20,11 @@ const ListadoPacientes = ({ pacientes, setPaciente }) => {
       }
 
       {
-        pacientes.map((pacientE) =>
+        pacientes.map((paciente) =>
         (
           <Paciente
             key={pacientE.id}
-            pacientE={pacientE}
+            paciente={paciente}
             setPaciente={setPaciente}
           />
         ))}
