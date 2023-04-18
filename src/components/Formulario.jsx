@@ -10,7 +10,7 @@ const Formulario = ({ pacientes, setPacientes, paciente }) => {
    const [sintomas, setSintomas] = useState('');
    const [error, setError] = useState(false);
 
-   useEffect( () => {
+   useEffect(() => {
       if (Object.keys(paciente).length > 0) {
          setNombre(paciente.nombre)
          setPropietario(paciente.propietario)
@@ -37,18 +37,30 @@ const Formulario = ({ pacientes, setPacientes, paciente }) => {
       }
       else { setError(false) }
 
-      const objetoPaceiente = {
+      const objetoPaciente = {
          nombre,
          propietario,
          email,
          fecha,
          sintomas,
-         id: generarId()
       }
 
+      if(paciente.id) {
+         // Editando el Registro
+         objetoPaciente.id = paciente.id
+         const pacientesActualizados = pacientes.map( pacienteState => pacienteState.id === paciente.id ? objetoPaciente : pacienteState )
 
-      
-      setPacientes([...pacientes, objetoPaceiente])
+         setPacientes(pacientesActualizados)
+       
+
+     } else {
+         // Nuevo registro
+         objetoPaciente.id = generarId();
+         setPacientes([...pacientes, objetoPaciente]);
+     }
+
+
+      //setPacientes([...pacientes, objetoPaciente])
 
       // cambiar mail YNOMBRe  :
       // setPacientes({nombre, email})
@@ -154,7 +166,7 @@ const Formulario = ({ pacientes, setPacientes, paciente }) => {
 
             <input type="submit"
                className='p-3 w-full bg-indigo-600  hover:bg-indigo-700 transition-colors text-white uppercase font-bold cursor-pointer  mb-2 mt-5 '
-               value={paciente.id? "Guardar Paciente" : "Agregar Paciente"} />
+               value={paciente.id ? "Guardar Paciente" : "Agregar Paciente"} />
 
 
          </form>
