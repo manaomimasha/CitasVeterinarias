@@ -46,8 +46,11 @@ const Formulario = ({ pacientes, setPacientes, paciente }) => {
          id: generarId()
       }
 
+
+      
       setPacientes([...pacientes, objetoPaceiente])
-      // //cambiar mail YNOMBRe  :
+
+      // cambiar mail YNOMBRe  :
       // setPacientes({nombre, email})
 
       setNombre("")
