@@ -12,8 +12,6 @@ function App() {
   useEffect(()=>{
     localStorage.setItem('pacientes',JSON.stringify(pacientes))
   },[pacientes])
-
-
   
   function eliminarPaciente(id) {
     const pacientesActualizados = pacientes.filter(paciente => paciente.id !== id)
