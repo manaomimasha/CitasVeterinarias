@@ -94,6 +94,7 @@ setPacientes([...pacientes, objetoPaciente ])
                   setNombre(e.target.value)
                }}
             />
+            
 
             <label htmlFor="prop"
                className='uppercase font-bold  text-grey-700 '>
