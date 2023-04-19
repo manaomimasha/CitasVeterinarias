@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import Mensaje from "./Mensaje"
 
-const Formulario = ({ pacientes, setPacientes, paciente }) => {
+const Formulario = ({ pacientes, setPacientes, paciente, setPaciente }) => {
 
    const [nombre, setNombre] = useState('');
    const [propietario, setPropietario] = useState('');
@@ -47,18 +47,19 @@ const Formulario = ({ pacientes, setPacientes, paciente }) => {
 
       if(paciente.id){
 objetoPaciente.id= paciente.id
-const pacientesActualizados = pacientes.map( pacientesEstado => pacientesEstado.id === paciente.id ?  objetoPaciente : pacientesEstado )
+const pacientesActualizados = pacientes.map( 
+   pacientesEstado => pacientesEstado.id === paciente.id ?  objetoPaciente : pacientesEstado )
 setPacientes(pacientesActualizados)
+setPaciente({})
       }  else {
-objetoPaciente.id=generarId
+objetoPaciente.id=generarId()
 setPacientes([...pacientes, objetoPaciente ])
       }   
 
 
       //setPacientes([...pacientes, objetoPaciente])
 
-      // cambiar mail YNOMBRe  :
-      // setPacientes({nombre, email})
+      // cambiar mail y nombre  : setPacientes({nombre, email})
 
       setNombre("")
       setPropietario("")
